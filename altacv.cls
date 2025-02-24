@@ -114,6 +114,7 @@
 \let\ratingmarker\cvRatingMarker  % for backward compatibility
 \newcommand{\cvDateMarker}{\faCalendar[regular]}
 \newcommand{\cvLocationMarker}{\faMapMarker}
+\newcommand{\cvGraduationMarker}{\faGraduationCap}
 \newcommand{\locationname}{Location}
 \newcommand{\datename}{Date}
 
@@ -130,7 +131,7 @@
 \RequirePackage{changepage}
 
 \setlength{\parindent}{0pt}
-\newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
+\newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip\par}
 
 \newenvironment{fullwidth}{%
   \begin{adjustwidth}{}{\dimexpr-\marginparwidth-\marginparsep\relax}}
@@ -225,6 +226,7 @@
   \pretocmd{\xtwitter}{\ClassWarning{altacv}{You tried to use \string\xtwitter, but the new X icon isn't available. Please ensure you have updated the `simpleicons' package. Falling back to \string\twitter\space icon for now}}{}{}%
  }
 \NewInfoField{linkedin}{\faLinkedin}[https://linkedin.com/in/]
+\NewInfoField{xing}{\faXing}[https://www.xing.com/profile/] % Added Xing, another platform like linkedin
 \NewInfoField{github}{\faGithub}[https://github.com/]
 % v1.7.3 Backward compatibility for ORCiD icon
 \ifdef{\faOrcid}{
@@ -317,21 +319,19 @@
 
 % v1.1.4: fixes inconsistent font size
 % v1.7: adds accsupp ActualText for location and date markers
-\newcommand{\cvevent}[4]{%
+\newcommand{\cvevent}[4]{
   {\large\color{emphasis}#1\par}
   \smallskip\normalsize
   \ifstrequal{#2}{}{}{
   \textbf{\color{accent}#2}\par
   \smallskip}
-  \ifstrequal{#3}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}%
-      ~#3}%
-    }}%
-  \ifstrequal{#4}{}{}{%
-    {\small\makebox[0.5\linewidth][l]%
-      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}%
-        ~#4}%
+  \ifstrequal{#3}{}{}{
+    {\small\makebox[0.5\linewidth][l]
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvDateMarker\EndAccSupp{}~#3}
+    }}
+  \ifstrequal{#4}{}{}{
+    {\small\makebox[0.5\linewidth][l]
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\locationname:}}\cvLocationMarker\EndAccSupp{}~#4}
     }}\par
   \medskip\normalsize
 }
@@ -343,6 +343,16 @@
   & #3
   \end{tabularx}%
   \smallskip
+}
+
+\newcommand{\cvgrades}[1]{%
+  % \smallskip\normalsize
+  \ifstrequal{#1}{}{}{
+    {\small\makebox[0.5\linewidth][l]
+      {\BeginAccSupp{method=pdfstringdef,ActualText={\datename:}}\cvGraduationMarker\EndAccSupp{}%
+      ~#1}
+    }}\par
+  \medskip\normalsize
 }
 
 \newcommand{\cvtag}[1]{%
