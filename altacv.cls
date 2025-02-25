@@ -93,9 +93,9 @@
 % 1.7.3 For backward compatibility re hooks management
 \if@withhyper
 \IfFormatAtLeastTF{2020-10-01}{%
-  \AddToHook{begindocument/before}{\hypersetup{hidelinks}\urlstyle{same}}
+  \AddToHook{begindocument/before}{\hypersetup{hidelinks, pdfpagemode=UseNone, bookmarks=false}\urlstyle{same}}
 }{%
-  \AtBeginDocument{\hypersetup{hidelinks}\urlstyle{same}}
+  \AtBeginDocument{\hypersetup{hidelinks, pdfpagemode=UseNone, bookmarks=false}\urlstyle{same}}
 }
 \fi
 
