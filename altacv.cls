@@ -21,17 +21,17 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{altacv}[2024/10/31 AltaCV v1.7.3, yet another alternative class for a resume/curriculum vitae.]
 
-%% v1.1: Optionally load academicons
-%% v1.4: Nope, academicons is unnecessary; fontawesome5 has \faOrcid.
-%% v1.7.3: Re backward compatibility we'll now load academicons automatically for \aiOrcid if ≤TL2019 i.e. if \faOrcid undefined
+% v1.1: Optionally load academicons
+% v1.4: Nope, academicons is unnecessary; fontawesome5 has \faOrcid.
+% v1.7.3: Re backward compatibility we'll now load academicons automatically for \aiOrcid if ≤TL2019 i.e. if \faOrcid undefined
 \DeclareOption{academicons}{\ClassWarning{altacv}{academicons option is now obsolete and unnecessary.}}
-%% v1.1.3: Choice of round/square photo
+% v1.1.3: Choice of round/square photo
 \newif\if@normalphoto
 \DeclareOption{normalphoto}{\@normalphototrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}}
 \newif\if@raggedtwoe
 \DeclareOption{ragged2e}{\@raggedtwoetrue}
-%% v1.3: load hyperref for clickable hyperlinks
+% v1.3: load hyperref for clickable hyperlinks
 \newif\if@withhyper
 \DeclareOption{withhyper}{\@withhypertrue}
 \ProcessOptions\relax
@@ -40,17 +40,17 @@
 \RequirePackage{etoolbox}
 % v1.7.3 Load xcolor early to avoid receiving `hyperref` option from pdfx package
 \RequirePackage{xcolor}
-%% v1.3.2 Hopefully this helps make the PDF
-%% file more 'friendly' with copy-paste etc
+% v1.3.2 Hopefully this helps make the PDF
+% file more 'friendly' with copy-paste etc
 \RequirePackage[a-1b]{pdfx}
 \RequirePackage{accsupp}
-%% v1.7.3 Avoid 'Token not allowed' when \\ used with accsupp
+% v1.7.3 Avoid 'Token not allowed' when \\ used with accsupp
 \pdfstringdefDisableCommands{
   \let\\\space
 }
 \RequirePackage{xparse}
 \RequirePackage[margin=2cm]{geometry}
-\RequirePackage[fixed]{fontawesome5}%[2020-01-15]
+\RequirePackage[fixed]{fontawesome5} % [2020-01-15]
 
 % 1.7.3 For backward compatibility
 \providecommand\IfFormatAtLeastTF{\@ifl@t@r\fmtversion}
